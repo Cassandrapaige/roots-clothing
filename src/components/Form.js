@@ -12,7 +12,7 @@ const Form = () => {
                 <form>
                     <label htmlFor="email">Enter Your E-mail</label>
                     <input type="email" name='email'/>
-                    <input type="submit" value="Sign Up Now"/>
+                    <button type="submit" className = "submit">Sign Up Now</button>
                 </form>
             </div>
     )

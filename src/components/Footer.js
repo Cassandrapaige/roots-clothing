@@ -96,8 +96,6 @@ const Footer = () => {
             items = {copy_nav}
             section = "copy_nav" />
         </div>
-      
-
        </footer>
     )
 }

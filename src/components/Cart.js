@@ -59,7 +59,6 @@ const Cart = (props) => {
               <span class = "total_items"> -{ props.quantity } item{ props.quantity !== 1 ? 's'  : '' }</span>
               <span>${ props.totalPrice } CAD</span></p>
           </div>
-
         </section>
     );
   }
