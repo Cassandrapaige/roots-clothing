@@ -143,13 +143,10 @@ $main-font: 'Montserrat', sans-serif;
 .parallax {
   min-height: 65vh;
   background-attachment: fixed;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#image1 {
-  background-image: url('./images/plaid.jpg')
+  transition: all 1s ease;
 }
 
 @media screen and (max-width: 500px) {
