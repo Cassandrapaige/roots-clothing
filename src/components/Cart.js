@@ -21,7 +21,7 @@ const Cart = (props) => {
                             onClick={() => props.updateCart(itemType, 'add')}><i class="fas fa-plus"></i>
                           </button>
                           <button 
-                            onClick={() => props.updateCart(itemType, 'minus')}><i class="fas fa-trash-alt"></i>
+                            onClick={() => props.updateCart(itemType, 'minus')}><i class="fas fa-minus"></i>
                           </button>
                       </div>
                   </div>
