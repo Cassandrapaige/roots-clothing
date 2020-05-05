@@ -1,12 +1,12 @@
 import React from 'react';
 
 
-const Cart = (props) => {
+const Cart = ({totalPrice, quantity, cartData, updateCart}) => {
     let shoppingCart = [];
     let isEmpty = true;
   
-    Object.keys(props.cartData).forEach((itemType, i) => {
-      let item = props.cartData[itemType];
+    Object.keys(cartData).map((itemType, i) => {
+      let item = cartData[itemType];
       if (item.quantity > 0) {
         shoppingCart.push(
           <div className = 'cart_item' key= {i}>
@@ -17,11 +17,11 @@ const Cart = (props) => {
                   <div className="info_details">
                       <p className = 'cart_item_price'> ${ item.current } </p>
                       <div className="control_btns">
-                          <button 
-                            onClick={() => props.updateCart(itemType, 'add')}><i class="fas fa-plus"></i>
+                        <button 
+                            onClick={() => updateCart(itemType, 'minus')}><i class="fas fa-minus"></i>
                           </button>
                           <button 
-                            onClick={() => props.updateCart(itemType, 'minus')}><i class="fas fa-minus"></i>
+                            onClick={() => updateCart(itemType, 'add')}><i class="fas fa-plus"></i>
                           </button>
                       </div>
                   </div>
@@ -30,6 +30,7 @@ const Cart = (props) => {
         )
       }
     })
+
     if (shoppingCart.length > 0) {
       isEmpty = false;
     } else if (isEmpty === true) {
@@ -37,18 +38,18 @@ const Cart = (props) => {
         <p>Looks like you better start shopping.</p>
       )
     }
-  
+
     return ( 
     
         <section className = 'shoppingCart'>
 
-            { props.totalPrice > 200 &&
+            { totalPrice > 200 &&
             <div className = 'promo'>
                 <h4>You qualify for free shipping <i class="fas fa-shipping-fast"></i></h4>
                 <p>Available on all orders over $200</p>
             </div> }
 
-            <h1 className = 'title'> My Cart <span> { props.quantity } </span></h1>
+            <h1 className = 'title'> My Cart <span> { quantity } </span></h1>
 
           <div>
             { shoppingCart }
@@ -56,8 +57,8 @@ const Cart = (props) => {
 
           <div>
             <p className = 'cart_total'>Subtotal 
-              <span class = "total_items"> -{ props.quantity } item{ props.quantity !== 1 ? 's'  : '' }</span>
-              <span>${ props.totalPrice } CAD</span></p>
+              <span class = "total_items"> -{ quantity } item{ quantity !== 1 ? 's'  : '' }</span>
+              <span>${ totalPrice } CAD</span></p>
           </div>
         </section>
     );

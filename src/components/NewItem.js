@@ -1,19 +1,20 @@
 import React from 'react'
 import Items from './Items';
 
-const NewItems = (props) => {
-    const renderItems = props.items.map(item  => {
+const NewItems = ({items, addToCart}) => {
+    const renderItems = Object.keys(items).map((itemType, i) => {
+        let item = items[itemType];
         return(
             <div className = 'card' key= {item.id}>
                 <img src={item.image} alt=""/>
                 <div className="overlay">
                     <button 
-                        onClick = {() => props.addToCart(item.title, 'add')}>
+                        onClick = {() => addToCart(itemType, 'add')}>
                         Add to cart 
                     </button>
                 </div>
                 <div className="info">
-                    <h2>{item.title}</h2>
+                    <h2>{itemType}</h2>
                     <span>{item.price} CDN</span>
                 </div>
             </div>

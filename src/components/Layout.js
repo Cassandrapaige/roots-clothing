@@ -1,13 +1,4 @@
-import React, { Component, useState } from 'react'
-
-/* IMAGES */
-import boots0 from '../images/boots.jpg'
-import boots1 from '../images/boot1.jpg'
-import boots2 from '../images/boot2.jpg'
-import boots3 from '../images/boot3.jpg'
-import boots4 from '../images/boot4.jpg'
-import purse1 from '../images/purse.jpg'
-import purse2 from '../images/purse1.jpg'
+import React, { Component } from 'react'
 
 /* COMPONENTS */
 import Header from './Header'
@@ -18,6 +9,8 @@ import Navigation from './Navigation'
 import Banners from './Banners'
 import Cart from './Cart'
 import Footer from './Footer'
+
+import { _DATA } from '../constants'
 
 const main_nav = [
     {label: "New this Month"},
@@ -36,50 +29,7 @@ class Layout extends Component {
         totalPrice: 0,
         displayCart: false,
         showNav: false, 
-        shoppingCart: {
-            "Womens Port Dalhousie Boot": {
-                quantity: 0,
-                current: 0,
-                price: 229.99,
-                image: boots0
-            },
-            "Womens Knockout Boot":  {
-                quantity: 0,
-                current: 0,
-                price: 189.99,
-                image: boots1
-            },
-            "Womens Junction Boot": {
-                quantity: 0,
-                current: 0,
-                price: 198.99,
-                image: boots3
-            },
-            "Junction Foldover": {
-                quantity: 0,
-                current: 0,
-                price: 169.99,
-                image: purse1
-            },
-            "Womens Riverdale Shorty Boot": {
-                quantity: 0,
-                current: 0,
-                price: 209.99,
-                image: boots2
-            },
-            "Mens Beltline Boot": {
-                quantity: 0,
-                current: 0,
-                price: 149.99,
-                image: boots4
-            },
-            "City Mont Royal Bag": {
-                quantity: 0,
-                current: 0,
-                price: 169.99,
-                image: purse2
-            }
-        }
+        shoppingCart: _DATA
     }
 
     toggleCart = () => {
@@ -134,13 +84,12 @@ class Layout extends Component {
           totalItems: updatedItems,
           totalPrice: updatedTotal
         });
-
       }
 
     calculateTotal = (item) => {
         let total = 0;
         Object.keys(item).forEach(type => {
-        total += item[type].current
+            total += item[type].current
         })
         return parseFloat(total).toFixed(2);
     }
