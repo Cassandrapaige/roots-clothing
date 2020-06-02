@@ -1,19 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Items from './Items';
 
 const NewItems = ({items, addToCart}) => {
     const renderItems = Object.keys(items).map((itemType, i) => {
         let item = items[itemType];
         return(
-            <div className = 'card' key= {item.id}>
-                <img src={item.image} alt=""/>
-                <div className="overlay">
+               <div className = 'card' key= {item.id}>
+                <div className="card-upper">
+                    <img src={item.image} alt=""/>
                     <button 
                         onClick = {() => addToCart(itemType, 'add')}>
-                        Add to cart 
+                        Add to cart
                     </button>
                 </div>
-                <div className="info">
+                <div className="card-lower">
                     <h2>{itemType}</h2>
                     <span>{item.price} CDN</span>
                 </div>
@@ -30,8 +30,6 @@ const NewItems = ({items, addToCart}) => {
         </div>
      )
  }
-
-
 
 export default NewItems
 
